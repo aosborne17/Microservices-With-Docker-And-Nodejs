@@ -1,0 +1,25 @@
+version: '3'
+services:
+  db:
+    # 
+    image: mongo
+    restart: always
+    ports: [27017:27017]
+
+  web:
+    # telling the docker compose that the Dockerfile is in the app folder
+    build: ./app
+    ports: [3000:3000]
+    environment:
+      # the db is telling docker we are running on a docker internal network
+      - DB_HOST=mongo://db:27017/posts
+#    volumes:
+      - /data/db
+    # we are saying that the web container depends on the db container, this connects the link between web and db
+    depends_on:
+      - db
+
+
+
+# even though you expose the ports in the app, you must also expose it on the docker compose file
+# We can build contaienrs from images or docker files
