@@ -2,21 +2,22 @@
 
 
 
-## Creating network
 
-- Creating a network named sparta app
-```
-docker network create --driver bridge sparta-app
-```
 
-## Running DB
+
+## Running our docker compose
 
 ```
-docker run -d -p 27017:27017 --network sparta-app --name mongo-db 03c21c6e6451
+docker-compose up -d 
 ```
 
-## Running app
+- We can also stop things by running the following
+```
+docker-compose down
+```
+
+## Turning our newly made container into an image
 
 ```
-docker run -d -p 3000:3000 --network sparta-app --name web-app ecceac239120
+
 ```

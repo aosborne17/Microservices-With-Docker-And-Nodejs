@@ -13,11 +13,14 @@ COPY package*.json ./
 
 RUN npm install
 
+
 # from the current folder we want to copy everything into the working location of the container
 COPY . .
 
 # Expose the port in which we will run the application
 
 EXPOSE 3000
+
+# CMD ["node", "seeds/seed.js", "start", "node", "app.js"]
 
 CMD ["node", "app.js"]
